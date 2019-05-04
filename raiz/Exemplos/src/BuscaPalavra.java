@@ -1,7 +1,6 @@
 import java.util.Random;
 
 import javax.swing.JOptionPane;
-import javax.swing.JPopupMenu;
 
 public class BuscaPalavra {
 
@@ -22,7 +21,6 @@ public class BuscaPalavra {
 			matz[il][ic + i] = (int) palavra.charAt(i);
 		}
 
-		char ch = 0;
 		for (int l = 0; l < 10; l++) { // linha
 			for (int c = 0; c < qt; c++) {// coluna
 				if (matz[l][c] == 0) {

@@ -6,9 +6,9 @@ import javax.swing.JOptionPane;
 
 public class GerenciarPessoa {
 
-	public static void main(String[] args) {
-
-		try {
+	public Cliente CadastrarCliente() throws ParseException {
+//Encapsulamento - tipo de retorno(qualquer tipo de variavel ou classe) - nome do metodo (lista de argumentos)
+				
 
 			String nome = JOptionPane
 					.showInputDialog("Digite o nome do cliente");
@@ -26,7 +26,7 @@ public class GerenciarPessoa {
 			do {
 			cliente.setCpf(JOptionPane.showInputDialog("Digite o CPF"));
 			
-			}while(cliente.getCpf() != null);
+			}while(cliente.getCpf() == null);
 			
 			cliente.setTelefone(JOptionPane
 					.showInputDialog("Digite o telefone"));
@@ -44,12 +44,11 @@ public class GerenciarPessoa {
 							+ cliente.getSexo() + "\n" + "Tell: "
 							+ cliente.getTelefone());*/
 
-			GerenciarConta gerenciar = new GerenciarConta();
-			gerenciar.usarConta(cliente);
 
-		} catch (ParseException e) {
-			JOptionPane.showMessageDialog(null, "ERROR.");
-		}
+			
+
+			
+			return cliente;
 
 	}
 

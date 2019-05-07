@@ -1,0 +1,49 @@
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.JOptionPane;
+
+public class GerenciarBanco {
+
+	public static void main(String[] args) {
+
+		GerenciarConta gerenciar = new GerenciarConta();
+		Object escolha = "";
+		List<Conta> lsConta = new ArrayList<Conta>();
+
+		do {
+
+			Object[] opcBanco = { "Nova Conta", "Gerenciar Conta", "Concluir" };
+			escolha = JOptionPane.showInputDialog(null, "Escolha uma opção",
+					"Opções", JOptionPane.DEFAULT_OPTION, null, opcBanco,
+					opcBanco[0]);
+
+			if (escolha.equals("Nova Conta")) {
+				lsConta.add(gerenciar.cadastrarConta());
+
+			}
+
+		} while (!escolha.equals("Concluir"));
+		
+		gravarArquivo();
+
+		// gerenciar.usarConta(cliente);
+	}
+	private static void  gravarArquivo(){
+		try {
+			FileWriter arquivo = new FileWriter("");
+			PrintWriter escrever = new PrintWriter(arquivo);
+			
+			
+			
+			
+		} catch (IOException e) {
+			System.out.println("Arquivo não encontrado.");
+		}
+		
+	}
+}

@@ -1,0 +1,34 @@
+
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.JOptionPane;
+
+
+public class GerenciarBanco {
+	
+	public static void main(String[] args) {
+		
+		
+		GerenciarConta gerenciar = new GerenciarConta();
+		Object escolha = "";
+		
+		Object[] opcBanco = { "Nova Conta", "Gerenciar Conta", "Concluir" };
+		escolha = JOptionPane.showInputDialog(null, "Escolha uma opção",
+				"Opções", JOptionPane.DEFAULT_OPTION, null, opcBanco,
+				opcBanco[0]);
+		
+		List<Conta> lsConta = new ArrayList<Conta>();
+		if (escolha.equals("Nova Conta")) {
+			lsConta.add(gerenciar.cadastrarConta());
+			
+		} while (!escolha.equals("Concluir"));
+			
+		}
+		
+		
+//		gerenciar.usarConta(cliente);
+	}
+
+}

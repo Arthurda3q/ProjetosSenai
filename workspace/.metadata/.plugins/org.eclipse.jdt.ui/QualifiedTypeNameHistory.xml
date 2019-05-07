@@ -3,7 +3,6 @@
 <fullyQualifiedTypeName name="java.util.Scanner"/>
 <fullyQualifiedTypeName name="java.lang.ProcessBuilder"/>
 <fullyQualifiedTypeName name="java.awt.JobAttributes"/>
-<fullyQualifiedTypeName name="java.util.Random"/>
 <fullyQualifiedTypeName name="java.lang.InternalError"/>
 <fullyQualifiedTypeName name="java.io.ObjectInputStream.GetField"/>
 <fullyQualifiedTypeName name="java.lang.Double"/>
@@ -14,13 +13,14 @@
 <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
 <fullyQualifiedTypeName name="java.text.ParseException"/>
 <fullyQualifiedTypeName name="java.lang.Object"/>
-<fullyQualifiedTypeName name="java.lang.Integer"/>
-<fullyQualifiedTypeName name="javax.swing.JPopupMenu"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="GerarValidarCpf"/>
 <fullyQualifiedTypeName name="Autorizacao"/>
-<fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
 <fullyQualifiedTypeName name="java.text.DateFormat"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="java.util.Calendar"/>
+<fullyQualifiedTypeName name="java.util.Random"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="javax.swing.JPopupMenu"/>
+<fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
 </qualifiedTypeNameHistroy>

@@ -1,27 +1,35 @@
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Random;
 
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 public class GerenciarConta {
-	
-	
 
-	public void usarConta(Cliente cliente) {
-		UIManager.put("Button.defaultButtonFollowsFocus", Boolean.TRUE); // para
-																			// usar
-																			// o
-																			// 'enter'
-																			// para
-																			// entrar
-																			// em
-																			// um
-																			// option
+	public Conta cadastrarConta() {
 
-		Conta contao01 = new Conta(cliente);
-		contao01.numero = 301;
+		GerenciarPessoa futuroCliente = new GerenciarPessoa();
+		
+		Conta conta01 = null;
+		try {
+			conta01 = new Conta (futuroCliente.CadastrarCliente());
+			Random rand = new Random();
+			
+			conta01.numero = rand.nextInt(90000)+ 10000;
+			
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return conta01;
+	}
+
+	public void usarConta(Conta conta01) {
+		UIManager.put("Button.defaultButtonFollowsFocus", Boolean.TRUE);
+		// para usar o 'enter' para entrar em um option
+
 		JOptionPane.showMessageDialog(null,
-				"Bem Vindo Sr. " + cliente.getNome());
+				"Bem Vindo Sr. " + conta01.getCliente().getNome());
 
 		Object[] opcoes = { "Depositar", "Sacar", "Saldo", "Extrato", "Dados" };
 
@@ -39,14 +47,14 @@ public class GerenciarConta {
 					double valor = Double.parseDouble(JOptionPane
 							.showInputDialog("Insira o valor a ser depositado")
 							.replace(",", "."));// substituiçao de , por . !
-					contao01.depositar(valor);
+					conta01.depositar(valor);
 				}
 				if (opcao == 1) {// saque
 					String txValor = JOptionPane
 							.showInputDialog("Insira o valor para saque.");
 					double valor = Double.parseDouble(txValor); // convesao pra
 																// decimal
-					boolean sucesso = contao01.sacar(valor);
+					boolean sucesso = conta01.sacar(valor);
 
 					if (sucesso) {
 						JOptionPane.showMessageDialog(null,
@@ -66,21 +74,24 @@ public class GerenciarConta {
 				JOptionPane.showMessageDialog(
 						null,
 						"Saldo: R$ "
-								+ String.format("%,.2f", contao01.getSaldo()));
+								+ String.format("%,.2f", conta01.getSaldo()));
 			}
 			if (opcao == 3) {
 				JOptionPane.showMessageDialog(null,
-						"Extrato:" + contao01.getExtrato());
+						"Extrato:" + conta01.getExtrato());
 			}
 			if (opcao == 4) {
 				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-				JOptionPane.showMessageDialog(null, "Dados do Cliente:\n"
-						+ "Nome: " + contao01.getCliente().getNome()
-						+ "\nData de Nascimento: "
-						+sdf.format (cliente.getdNascimento()) + "\nCPF: "
-						+ contao01.getCliente().getCpf() + "\nSexo: "
-						+ contao01.getCliente().getSexo() + "\nTell: "
-						+ contao01.getCliente().getTelefone());
+				JOptionPane.showMessageDialog(
+						null,
+						"Dados do Cliente:\n" + "Nome: "
+								+ conta01.getCliente().getNome()
+								+ "\nData de Nascimento: "
+								+ sdf.format(conta01.getCliente().getdNascimento())
+								+ "\nCPF: " + conta01.getCliente().getCpf()
+								+ "\nSexo: " + conta01.getCliente().getSexo()
+								+ "\nTell: "
+								+ conta01.getCliente().getTelefone());
 			}
 		}
 

@@ -43,7 +43,7 @@ public class GerenciarConta {
 		JOptionPane.showMessageDialog(null,
 				"Bem Vindo Sr. " + conta01.getCliente().getNome());
 
-		Object[] opcoes = { "Depositar", "Sacar", "Saldo", "Extrato", "Dados" };
+		Object[] opcoes = { "Depositar", "Sacar","Tranferir", "Saldo", "Extrato", "Dados" };
 
 		int opcao = 0;
 		while (opcao != -1) { // enqt for diferente de -1 vai ficar repetindo,
@@ -51,7 +51,7 @@ public class GerenciarConta {
 
 			opcao = JOptionPane.showOptionDialog(null, "Escolha um opção",
 					"Oparações Bancarias", JOptionPane.DEFAULT_OPTION,
-					JOptionPane.INFORMATION_MESSAGE, null, opcoes, opcoes[2]);
+					JOptionPane.INFORMATION_MESSAGE, null, opcoes, opcoes[3]);
 
 			try {
 
@@ -76,23 +76,41 @@ public class GerenciarConta {
 								"Saldo indisponivel.");
 					}
 				}
+				if (opcao == 2) {
+					String contaR = JOptionPane.showInputDialog
+							("Digite o numero da conta para que deseja tranferir.");
+					if (contaR == lsConta){
+					String transfer = JOptionPane.showInputDialog("Digite o valor que deseja transferir."
+							+ " Saldo: "+ String.format("%,.2f", conta01.getSaldo()));
+					}
+					
+					
+					double valor = Double.parseDouble(transfer); 
+					boolean sucesso = conta01.sacar(valor);
+					
+					if (sucesso){
+						JOptionPane.showMessageDialog(null, "Operação realizada com s");
+					} else {
+						JOptionPane.showMessageDialog(null, "Saldo indisponivel");
+					}
+				}
 			} catch (NumberFormatException e) { // Correção de erro caso ponha
 												// letra no lugar de numbers.
 				JOptionPane.showMessageDialog(null, "Insira um número.");
 			} catch (NullPointerException e) {
 
 			}
-			if (opcao == 2) {
+			if (opcao == 3) {
 				JOptionPane.showMessageDialog(
 						null,
 						"Saldo: R$ "
 								+ String.format("%,.2f", conta01.getSaldo()));
 			}
-			if (opcao == 3) {
+			if (opcao == 4) {
 				JOptionPane.showMessageDialog(null,
 						"Extrato:" + conta01.getExtrato());
 			}
-			if (opcao == 4) {
+			if (opcao == 5) {
 				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 				JOptionPane.showMessageDialog(
 						null,

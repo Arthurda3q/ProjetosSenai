@@ -5,9 +5,10 @@ public class Conta {
 	private double saldo; // visivel apenas nesta classe
 	private String extrato = "";
 	
-	Conta(int numero, double saldo, Cliente cliente){
+	Conta(int numero, double saldo,String Extrato, Cliente cliente){
 		this.numero = numero;
 		this.saldo = saldo;
+		this.extrato = extrato;
 		this.cliente = cliente;
 	}
 	

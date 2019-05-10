@@ -30,8 +30,12 @@ public class Cliente extends Pessoa {
 
 	@Override
 	public String toString() {
-		return renda + ";" + telefone + ";" + getNome() + ";"
-				+ getdNascimento() + ";" + getCpf() + ";" + getSexo() + ";";
+		return renda + ";" 
+				+ telefone+ ";" 
+				+ getdNascimento() + ";"
+				+ getNome() + ";" 
+				+ getCpf() + ";"
+				+ getSexo() + ";";
 	}
 
 }

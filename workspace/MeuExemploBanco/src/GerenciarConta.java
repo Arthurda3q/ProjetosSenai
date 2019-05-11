@@ -36,7 +36,7 @@ public class GerenciarConta {
 		return conta01;
 	}
 
-	public void usarConta(Conta conta01) {
+	public void usarConta(Conta conta01, List<Conta> lsConta) {
 		UIManager.put("Button.defaultButtonFollowsFocus", Boolean.TRUE);
 		// para usar o 'enter' para entrar em um option
 

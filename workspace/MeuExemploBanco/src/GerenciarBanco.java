@@ -46,12 +46,13 @@ public class GerenciarBanco {
 					JOptionPane.showMessageDialog(null, 
 							"Número invalido de conta");
 				}else{
-					gerenciar.usarConta(usar);
+					gerenciar.usarConta(usar, lsConta);
 				}
 			}
+			gravarArquivo(lsConta);
 		} while (!escolha.equals("Concluir"));
 
-		gravarArquivo(lsConta);
+		
 		// gerenciar.usarConta(cliente);
 
 	}
@@ -73,7 +74,7 @@ public class GerenciarBanco {
 		}
 	}
 	
-	private static List<Conta> buscarContas(){
+	public static List<Conta> buscarContas(){
 		List<Conta> lsConta = new ArrayList<Conta>();
 		
 		try {

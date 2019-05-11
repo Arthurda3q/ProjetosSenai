@@ -7,29 +7,29 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 public class GerenciarConta {
-	
-	public Conta buscarConta(List <Conta> lsConta, String numero){
+
+	public Conta buscarConta(List<Conta> lsConta, String numero) {
 		int num = Integer.parseInt(numero);
 		for (Conta conta : lsConta) {
-			if (conta.numero == num){
+			if (conta.numero == num) {
 				return conta;
 			}
 		}
-		
+
 		return null;
 	}
 
 	public Conta cadastrarConta() {
 
 		GerenciarPessoa futuroCliente = new GerenciarPessoa();
-		
+
 		Conta conta01 = null;
 		try {
-			conta01 = new Conta (futuroCliente.CadastrarCliente());
+			conta01 = new Conta(futuroCliente.CadastrarCliente());
 			Random rand = new Random();
-			
-			conta01.numero = rand.nextInt(90000)+ 10000;
-			
+
+			conta01.numero = rand.nextInt(90000) + 10000;
+
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
@@ -40,10 +40,11 @@ public class GerenciarConta {
 		UIManager.put("Button.defaultButtonFollowsFocus", Boolean.TRUE);
 		// para usar o 'enter' para entrar em um option
 
-		JOptionPane.showMessageDialog(null,
-				"Bem Vindo Sr. " + conta01.getCliente().getNome());
+		JOptionPane.showMessageDialog(null, "Bem Vindo Sr. "
+				+ conta01.getCliente().getNome());
 
-		Object[] opcoes = { "Depositar", "Sacar","Tranferir", "Saldo", "Extrato", "Dados" };
+		Object[] opcoes = { "Depositar", "Sacar", "Tranferir", "Saldo",
+				"Extrato", "Dados" };
 
 		int opcao = 0;
 		while (opcao != -1) { // enqt for diferente de -1 vai ficar repetindo,
@@ -76,23 +77,28 @@ public class GerenciarConta {
 								"Saldo indisponivel.");
 					}
 				}
+
+				// TRANSFERENCIA
+				GerenciarBanco gebanco = new GerenciarBanco();
 				if (opcao == 2) {
-					String contaR = JOptionPane.showInputDialog
-							("Digite o numero da conta para que deseja tranferir.");
-					if (contaR == lsConta){
-					String transfer = JOptionPane.showInputDialog("Digite o valor que deseja transferir."
-							+ " Saldo: "+ String.format("%,.2f", conta01.getSaldo()));
+					Double valor = Double
+							.parseDouble(JOptionPane
+									.showInputDialog("Digite a valor a ser transferido."));
+					String numeroC = JOptionPane
+							.showInputDialog("Digite o numero da conta para que deseja tranferir.");
+					List<Conta> lsConta = gebanco.buscarContas();
+					Conta usar = buscarConta(lsConta, numeroC);
+					try {
+
+						if (Integer.parseInt(numeroC) == usar.numero) {
+							boolean sucesso = conta01.sacar(valor);
+							usar.depositar(valor);
+
+						}
+					} catch (NullPointerException e) {
+						JOptionPane.showMessageDialog(null, "Conta inválida.");
 					}
-					
-					
-					double valor = Double.parseDouble(transfer); 
-					boolean sucesso = conta01.sacar(valor);
-					
-					if (sucesso){
-						JOptionPane.showMessageDialog(null, "Operação realizada com s");
-					} else {
-						JOptionPane.showMessageDialog(null, "Saldo indisponivel");
-					}
+
 				}
 			} catch (NumberFormatException e) { // Correção de erro caso ponha
 												// letra no lugar de numbers.
@@ -114,13 +120,14 @@ public class GerenciarConta {
 				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 				JOptionPane.showMessageDialog(
 						null,
-						"Dados do Cliente:\n" + "Nome: "
+						"Dados do Cliente:\n"
+								+ "Nome: "
 								+ conta01.getCliente().getNome()
 								+ "\nData de Nascimento: "
-								+ sdf.format(conta01.getCliente().getdNascimento())
-								+ "\nCPF: " + conta01.getCliente().getCpf()
-								+ "\nSexo: " + conta01.getCliente().getSexo()
-								+ "\nTell: "
+								+ sdf.format(conta01.getCliente()
+										.getdNascimento()) + "\nCPF: "
+								+ conta01.getCliente().getCpf() + "\nSexo: "
+								+ conta01.getCliente().getSexo() + "\nTell: "
 								+ conta01.getCliente().getTelefone());
 			}
 		}

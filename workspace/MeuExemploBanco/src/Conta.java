@@ -12,6 +12,14 @@ public class Conta {
 		this.cliente = cliente;
 	}
 	
+	public int getNumero() {
+		return numero;
+	}
+
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+
 	Conta (Cliente cliente){
 		this.cliente = cliente;
 	}

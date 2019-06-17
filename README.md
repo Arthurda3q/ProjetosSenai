@@ -1,4 +1,7 @@
-# ProjetosSenai
-onde guardo projetos e arquivos do curso da java
+# ProjetoSenai - Autorizada J.A
 
-fiz uma update
+Este projeto é destinado para uma autorizada de produtos técnicos.
+Neste formulario que estou fazendo tera a parte para o cliente abrir
+um chamado e a parte administrativa onde a empresa podera vizualizar 
+os chamados abertos e fechados e onde eles poderao vizualizar o histórico
+de serviços prestados.
